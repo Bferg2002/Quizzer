@@ -55,21 +55,26 @@ export const QuizExpanded = ({
         sp(0);
     };
 
-   /* const editQuestionSub = (questionId: number, sub: string) => {
+   const editQuestionSub = (questionId: number, sub: string) => {
         editQuiz(quiz.id, {
             ...quiz,
-            questionList: quiz.questionList.map( aQuestion => aQuestion.id === questionId ? aQuestion.submission = sub :aQuestion
-            )
+            questionList: quiz.questionList.map(
+                (aQuestion: Question): Question => (
+                    aQuestion.id === questionId
+                    ? { ...aQuestion, submission: sub, options: [...aQuestion.options] }
+                    : aQuestion
+                ))
         });
     };
-*/
-    const editQuestionSub = (questionId: number, sub: string) => {
+
+   /* const editQuestionSub = (questionId: number, sub: string) => {
         const updatedQuestionList = quiz.questionList.map(aQuestion =>
             aQuestion.id === questionId ? { ...aQuestion, submission: sub } : aQuestion
         );
     
         editQuiz(quiz.id, { ...quiz, questionList: updatedQuestionList });
     };
+    */
 
     return (
         <>
@@ -106,7 +111,7 @@ export const QuizExpanded = ({
                 <QuizQuestion
                     key={quiz.id + "|" + q.id}
                     index={index}
-                    question="q"
+                    question={q}
                     submitted={submitArr[index]}
                     handleSubmit={handleQuestionSubmit}
                     addPoints={addPoints}

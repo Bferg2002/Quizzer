@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/27</span>
+                <span class='fraction'>0/26</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/26</span>
+                <span class='fraction'>0/25</span>
             </div>
         
             
@@ -190,7 +190,12 @@
 <a name='L125'></a><a href='#L125'>125</a>
 <a name='L126'></a><a href='#L126'>126</a>
 <a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -247,20 +252,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -374,21 +384,26 @@ export const QuizExpanded = <span class="cstat-no" title="statement not covered"
 <span class="cstat-no" title="statement not covered" >        sp(0);</span>
     };
 &nbsp;
-   /* const editQuestionSub = (questionId: number, sub: string) =&gt; {
-        editQuiz(quiz.id, {
+   const editQuestionSub = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(q</span>uestionId: number, sub: string) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        editQuiz(quiz.id, {</span>
             ...quiz,
-            questionList: quiz.questionList.map( aQuestion =&gt; aQuestion.id === questionId ? aQuestion.submission = sub :aQuestion
-            )
+            questionList: quiz.questionList.map(
+<span class="fstat-no" title="function not covered" >                (a</span>Question: Question): Question =&gt; (
+<span class="cstat-no" title="statement not covered" >                    aQuestion.id === questionId</span>
+                    ? { ...aQuestion, submission: sub, options: [...aQuestion.options] }
+                    : aQuestion
+                ))
         });
     };
-*/
-    const editQuestionSub = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(q</span>uestionId: number, sub: string) =&gt; {</span>
-        const updatedQuestionList = <span class="cstat-no" title="statement not covered" >quiz.questionList.map(<span class="fstat-no" title="function not covered" >aQ</span>uestion =&gt;</span>
-<span class="cstat-no" title="statement not covered" >            aQuestion.id === questionId ? { ...aQuestion, submission: sub } : aQuestion</span>
+&nbsp;
+   /* const editQuestionSub = (questionId: number, sub: string) =&gt; {
+        const updatedQuestionList = quiz.questionList.map(aQuestion =&gt;
+            aQuestion.id === questionId ? { ...aQuestion, submission: sub } : aQuestion
         );
     
-<span class="cstat-no" title="statement not covered" >        editQuiz(quiz.id, { ...quiz, questionList: updatedQuestionList });</span>
+        editQuiz(quiz.id, { ...quiz, questionList: updatedQuestionList });
     };
+    */
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
         &lt;&gt;
@@ -425,7 +440,7 @@ export const QuizExpanded = <span class="cstat-no" title="statement not covered"
 <span class="cstat-no" title="statement not covered" >                &lt;QuizQuestion</span>
                     key={quiz.id + "|" + q.id}
                     index={index}
-                    question="q"
+                    question={q}
                     submitted={submitArr[index]}
                     handleSubmit={handleQuestionSubmit}
                     addPoints={addPoints}
@@ -451,7 +466,7 @@ export const QuizExpanded = <span class="cstat-no" title="statement not covered"
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun Oct 15 2023 02:00:39 GMT-0400 (Eastern Daylight Time)
+                at Sun Oct 15 2023 03:09:32 GMT-0400 (Eastern Daylight Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
