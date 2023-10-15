@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1697354030883" clover="3.2.0">
-  <project timestamp="1697354030883" name="All files">
-    <metrics statements="110" coveredstatements="0" conditionals="45" coveredconditionals="0" methods="59" coveredmethods="0" elements="214" coveredelements="0" complexity="0" loc="110" ncloc="110" packages="3" files="10" classes="10"/>
+<coverage generated="1697353908402" clover="3.2.0">
+  <project timestamp="1697353908402" name="All files">
+    <metrics statements="136" coveredstatements="0" conditionals="52" coveredconditionals="0" methods="71" coveredmethods="0" elements="259" coveredelements="0" complexity="0" loc="136" ncloc="136" packages="3" files="11" classes="11"/>
     <package name="src">
       <metrics statements="3" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="App.tsx" path="C:\Users\btbf5\Quizzer\src\App.tsx">
