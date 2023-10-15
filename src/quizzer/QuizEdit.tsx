@@ -14,7 +14,7 @@ export const QuizEdit = ({
     resetView
 }: {
     quiz:Quiz;
-    editQuiz:(id:number, question:Question)=>void;
+    editQuiz:(id:number, quiz:Quiz)=>void;
     deleteQuiz:(id:number)=>void;
     switchEdit:()=>void;
     resetView:()=>void;
@@ -41,14 +41,7 @@ export const QuizEdit = ({
     };
 
     const saveChanges = () => {
-        editQuiz(quiz.id, {
-            ...newQuiz,
-            type: "short_answer_question",
-            options: [],
-            submission: "",
-            expected: "",
-            points: 0
-        });
+        editQuiz(quiz.id, { ...newQuiz });
     };
 
     const swapQuestion = (idx1: number, idx2: number) => {
