@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/30</span>
+                <span class='fraction'>0/31</span>
             </div>
         
             
@@ -315,7 +315,19 @@
 <a name='L250'></a><a href='#L250'>250</a>
 <a name='L251'></a><a href='#L251'>251</a>
 <a name='L252'></a><a href='#L252'>252</a>
-<a name='L253'></a><a href='#L253'>253</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -328,9 +340,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -568,9 +588,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from "react";
-import { Question, QuestionType } from "../interfaces/question";
+import { Question /*QuestionType*/ } from "../interfaces/question";
 &nbsp;
 import "./QuestionEdit.css";
+import { Button, Form } from "react-bootstrap";
+//import { JsxElement } from "typescript";
 &nbsp;
 export const QuestionEdit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span></span>
     index,
@@ -579,24 +601,32 @@ export const QuestionEdit = <span class="cstat-no" title="statement not covered"
     editQuestion,
     removeQuestion,
     swapQuestion
-}: {}) =&gt; {
-    const [a, b] = <span class="cstat-no" title="statement not covered" >useState&lt;number&gt;(</span>
-        question.options.findIndex(<span class="fstat-no" title="function not covered" >(s</span>: string) =&gt; <span class="cstat-no" title="statement not covered" >question.expected === s)</span>
-    );
+}: {
+    index: number;  //interfaces
+    lastIndex: number;
+    question: Question;
+    editQuestion:(id:number, question:Question)=&gt;void;
+    removeQuestion:(id:number)=&gt;void;
+    swapQuestion:(index1:number, index2:number)=&gt;void;
+    
+&nbsp;
+}):JSX.Element =&gt; {
+    const [a, b] = <span class="cstat-no" title="statement not covered" >useState&lt;number&gt;(0);</span>
+<span class="cstat-no" title="statement not covered" >        question.options.findIndex(<span class="fstat-no" title="function not covered" >(s</span>: string) =&gt; <span class="cstat-no" title="statement not covered" >question.expected === s)</span>;</span>
 &nbsp;
     const handleNumOptions = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        b(0);</span>
         const newNum =
 <span class="cstat-no" title="statement not covered" >            parseInt(e.target.value) &lt; 1 ? 1 : parseInt(e.target.value);</span>
-<span class="cstat-no" title="statement not covered" >        editQuestion(question.id, {</span>
+<span class="cstat-no" title="statement not covered" >        editQuestion(question.id, {/*question fields below*/</span>
             ...question,
-            type: "multiple_choice_question",
+            type: "multiple_choice_question", 
             expected: "Example Answer",
             options: Array(newNum).fill("Example Answer")
-        });
+         });
     };
 &nbsp;
-    const switchMulti = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+    const switchMulti = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>: React.ChangeEvent&lt;HTMLSelectElement&gt;) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        b(0);</span>
 <span class="cstat-no" title="statement not covered" >        editQuestion(question.id, {</span>
             ...question,
@@ -680,7 +710,7 @@ export const QuestionEdit = <span class="cstat-no" title="statement not covered"
                                 &lt;Form.Select
                                     className="type_dropdown"
                                     value={question.type}
-                                    onChange={handleSwitch}
+                                    onChange={switchMulti}
                                 &gt;
                                     &lt;option
                                         data-testid={
@@ -826,7 +856,7 @@ export const QuestionEdit = <span class="cstat-no" title="statement not covered"
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun Oct 15 2023 02:02:36 GMT-0400 (Eastern Daylight Time)
+                at Sun Oct 15 2023 02:00:39 GMT-0400 (Eastern Daylight Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
