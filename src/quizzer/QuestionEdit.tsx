@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Question, QuestionType } from "../interfaces/question";
+import { Question /*QuestionType*/ } from "../interfaces/question";
 
 import "./QuestionEdit.css";
+import { Button, Form } from "react-bootstrap";
+//import { JsxElement } from "typescript";
 
 export const QuestionEdit = ({
     index,
@@ -10,24 +12,32 @@ export const QuestionEdit = ({
     editQuestion,
     removeQuestion,
     swapQuestion
-}: {}) => {
-    const [a, b] = useState<number>(
-        question.options.findIndex((s: string) => question.expected === s)
-    );
+}: {
+    index: number;  //interfaces
+    lastIndex: number;
+    question: Question;
+    editQuestion:(id:number, question:Question)=>void;
+    removeQuestion:(id:number)=>void;
+    swapQuestion:(index1:number, index2:number)=>void;
+    
+
+}):JSX.Element => {
+    const [a, b] = useState<number>(0);
+        question.options.findIndex((s: string) => question.expected === s);
 
     const handleNumOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
         b(0);
         const newNum =
             parseInt(e.target.value) < 1 ? 1 : parseInt(e.target.value);
-        editQuestion(question.id, {
+        editQuestion(question.id, {/*question fields below*/
             ...question,
-            type: "multiple_choice_question",
+            type: "multiple_choice_question", 
             expected: "Example Answer",
             options: Array(newNum).fill("Example Answer")
-        });
+         });
     };
 
-    const switchMulti = () => {
+    const switchMulti = (e: React.ChangeEvent<HTMLSelectElement>) => {
         b(0);
         editQuestion(question.id, {
             ...question,
@@ -111,7 +121,7 @@ export const QuestionEdit = ({
                                 <Form.Select
                                     className="type_dropdown"
                                     value={question.type}
-                                    onChange={handleSwitch}
+                                    onChange={switchMulti}
                                 >
                                     <option
                                         data-testid={
